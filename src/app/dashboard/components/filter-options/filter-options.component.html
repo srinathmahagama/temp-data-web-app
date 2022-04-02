@@ -1,3 +1,4 @@
+<div class="fliter-content">
 <form [formGroup]="searchForm">
     <mat-form-field appearance="outline" class="input-div">
         <mat-label>Sensor</mat-label>
@@ -27,9 +28,10 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
     </mat-form-field>
-    <button class="date-picker" mat-stroked-button color="primary" (click)="reset()">Reset</button>
-    <button class="date-picker" mat-stroked-button color="primary" *ngIf="!liveMode" (click)="switchToLive()">Live
+    <button class="date-picker" mat-raised-button color="accent" (click)="reset()">Reset</button>
+    <button class="date-picker" mat-raised-button color="accent" *ngIf="!liveMode" (click)="switchToLive()">Live
         Mode</button>
-    <button class="date-picker" mat-stroked-button color="primary" *ngIf="liveMode" (click)="defaultMode()">Default
+    <button class="date-picker" mat-raised-button color="accent" *ngIf="liveMode" (click)="defaultMode()">Default
         Mode</button>
 </form>
+</div>

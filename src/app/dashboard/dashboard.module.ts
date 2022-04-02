@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardRoutingModule } from './dashboard.routing.module';
 import {MatDividerModule} from '@angular/material/divider';
@@ -40,6 +40,6 @@ import {MatButtonModule} from '@angular/material/button'
     HttpClientModule,
     MatButtonModule
   ],
-  providers: [DashbaordService]
+  providers: [DashbaordService,DatePipe]
 })
 export class DashboardModule { }

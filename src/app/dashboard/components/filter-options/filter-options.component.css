@@ -1,11 +1,11 @@
 
 .input-div {
-    width : 100px;
+    width : 130px;
     margin: 0 5px 0 5px;
 }
 
 .date-picker {
-    width: 190px;
+    width: 170px;
     margin: 0 4px 0 4px;
 }
 
@@ -39,4 +39,15 @@ section {
     display: flex;
     justify-content: center;
     width: 120px;
+  }
+
+  .fliter-content {
+      padding: 1rem;
+      box-shadow: 30px -8px rgb(231, 231, 250);
+      border: 1px solid;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      background: white;
   }

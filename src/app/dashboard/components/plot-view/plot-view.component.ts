@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChartOptions, ChartType } from 'chart.js';
+import { Observable } from 'rxjs';
+import { TemperatureSensorData } from '../../model/temperature.sensor.data.model';
 
 
 @Component({
@@ -9,20 +12,39 @@ import { ChartOptions, ChartType } from 'chart.js';
 })
 export class PlotViewComponent implements OnInit {
 
-  constructor() { }
+  barChartLabels!: any[];
+  barChartData!: { data: number[], label: string }[];
+
+  @Input('sensorData') set sensorData(data: Observable<TemperatureSensorData[]>) {
+    data.subscribe(res => {
+      this.barChartLabels = res.map(data => {
+        return this.datePipe.transform(data.notedDate, 'medium')
+      })
+      const sensor1 = res
+        .filter(data => data.sensorId == '1')
+        .map(sensor1 => {
+          return sensor1.temperature
+        })
+      const sensor2 = res
+        .filter(data => data.sensorId == '2')
+        .map(sensor2 => {
+          return sensor2.temperature
+        })
+      this.barChartData = [
+        { data: sensor1, label: 'Sensor 1' },
+        { data: sensor2, label: 'Sensor 2' },
+      ]
+    })
+  };
+
+  constructor(private datePipe: DatePipe) { }
 
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
   public barChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
-
-  public barChartData = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
-  ];
 
   ngOnInit(): void {
   }
