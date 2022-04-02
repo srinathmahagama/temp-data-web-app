@@ -38,8 +38,7 @@
 
 .dashboard-col {
     width: 47%;
-    background-color: beige;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     
 }

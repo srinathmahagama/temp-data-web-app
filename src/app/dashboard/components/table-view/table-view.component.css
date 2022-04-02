@@ -1,3 +1,12 @@
  .mat-header-cell {
-      width: 100px;
+      width: 150px;
+  }
+
+  .table-content {
+      padding: .5rem;
+  }
+
+  .highlight{
+    background: rgb(63, 81, 181);
+    color: white;
   }

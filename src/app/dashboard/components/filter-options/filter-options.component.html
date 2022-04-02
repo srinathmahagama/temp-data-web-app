@@ -1,0 +1,35 @@
+<form [formGroup]="searchForm">
+    <mat-form-field appearance="outline" class="input-div">
+        <mat-label>Sensor</mat-label>
+        <input matInput formControlName="sensorId">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="input-div">
+        <mat-label>Room</mat-label>
+        <input matInput formControlName="roomId">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="input-div">
+        <mat-label>Temperature</mat-label>
+        <input matInput formControlName="temperature">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="input-div">
+        <mat-label>Position</mat-label>
+        <mat-select formControlName="position">
+            <mat-option value="IN">In</mat-option>
+            <mat-option value="OUT">Out</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="date-picker">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate formControlName="startDate" placeholder="Start Date">
+            <input matEndDate formControlName="endDate" placeholder="End date">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+    <button class="date-picker" mat-stroked-button color="primary" (click)="reset()">Reset</button>
+    <button class="date-picker" mat-stroked-button color="primary" *ngIf="!liveMode" (click)="switchToLive()">Live
+        Mode</button>
+    <button class="date-picker" mat-stroked-button color="primary" *ngIf="liveMode" (click)="defaultMode()">Default
+        Mode</button>
+</form>

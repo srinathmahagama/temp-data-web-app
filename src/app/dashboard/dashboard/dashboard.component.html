@@ -5,7 +5,16 @@
     <mat-divider></mat-divider>
     <div class="dashboard-content">
         <div class="dashboard-col">
-            <app-table-view></app-table-view>
+            <app-filter-options
+            (onSearchEmit) = "handleSearch($event)"
+            (onLiveModeEmit) = "handleLiveMode($event)"
+            (onDefaultModeEmit)="handleDefaultMode($event)"
+            >
+        </app-filter-options>
+            <app-table-view
+            [sensorData]="temperatureSensorData"
+            [liveMode]="getLiveMode()"
+            ></app-table-view>
         </div>
         <div class="dashboard-col">
             <app-plot-view></app-plot-view>

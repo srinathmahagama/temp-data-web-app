@@ -1,34 +1,39 @@
 <div class="table-content">
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <!--- Note that these columns can be defined in any order.
+        <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  </div>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="Sensor">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': isRequestLiveMode}"> {{element.sensorId}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Room">
+            <th mat-header-cell *matHeaderCellDef> Room </th>
+            <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': isRequestLiveMode}"> {{element.roomId |number : '1.0-0'}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Temperature">
+            <th mat-header-cell *matHeaderCellDef> Temperature </th>
+            <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': isRequestLiveMode}"> {{element.temperature |number : '1.0-2'}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Position">
+            <th mat-header-cell *matHeaderCellDef> Position </th>
+            <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': isRequestLiveMode}"> {{element.devicePosition}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Noted Date">
+            <th mat-header-cell *matHeaderCellDef> Noted Date </th>
+            <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': isRequestLiveMode}"> {{element.notedDate | date:'medium'}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { TemperatureSensorData } from '../../model/temperature.sensor.data.model';
 
 @Component({
   selector: 'app-table-view',
@@ -7,12 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableViewComponent implements OnInit {
 
+  dataSource: TemperatureSensorData[] = [];
+  isRequestLiveMode = false;
+
+  @Input('sensorData') set sensorData(data: Observable<TemperatureSensorData[]>){
+    console.log('in table ',data)
+    data.subscribe(res => {
+      this.dataSource = res;
+      console.log(res)
+    })
+  };
+
+  @Input() set liveMode(value: Observable<boolean>){
+    value.subscribe(res=>{
+      this.isRequestLiveMode = res;
+    })
+  }
+
   constructor() { }
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  //displayedColumns: string[] = ['Sensor', 'Room', 'Temperature', 'Position', 'Noted Date'];
-  dataSource = ELEMENT_DATA;
+  //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['Sensor', 'Room', 'Temperature', 'Position', 'Noted Date'];
+  //dataSource = ELEMENT_DATA;
 
   ngOnInit(): void {
+    
   }
 
 }
