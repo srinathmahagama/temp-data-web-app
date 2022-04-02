@@ -28,7 +28,7 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
     </mat-form-field>
-    <button class="date-picker" mat-raised-button color="accent" (click)="reset()">Reset</button>
+    <button class="date-picker" mat-raised-button color="accent" (click)="reset()" [disabled]="!isTouched()">Reset</button>
     <button class="date-picker" mat-raised-button color="accent" *ngIf="!liveMode" (click)="switchToLive()">Live
         Mode</button>
     <button class="date-picker" mat-raised-button color="accent" *ngIf="liveMode" (click)="defaultMode()">Default

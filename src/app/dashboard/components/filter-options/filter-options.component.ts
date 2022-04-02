@@ -48,6 +48,10 @@ export class FilterOptionsComponent implements OnInit {
     this.searchForm.reset();
   }
 
+  isTouched(){
+    return this.searchForm.dirty
+  }
+
   switchToLive(){
     this.onLiveModeEmit.emit(true);
     this.liveMode = true;

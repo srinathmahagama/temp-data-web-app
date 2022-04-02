@@ -2,3 +2,7 @@
     flex: 1 1 auto;
   }
   
+  .nav-click{
+      background-color: rgb(145, 141, 141);
+      color: white;
+  }
