@@ -1,25 +1,25 @@
 <div class="fliter-content">
 <form [formGroup]="searchForm">
-    <mat-form-field appearance="outline" class="input-div">
+    <mat-form-field appearance="outline" class="input-div" *ngIf="!liveMode">
         <mat-label>Sensor</mat-label>
         <input matInput formControlName="sensorId">
     </mat-form-field>
-    <mat-form-field appearance="outline" class="input-div">
+    <mat-form-field appearance="outline" class="input-div" *ngIf="!liveMode">
         <mat-label>Room</mat-label>
         <input matInput formControlName="roomId">
     </mat-form-field>
-    <mat-form-field appearance="outline" class="input-div">
+    <mat-form-field appearance="outline" class="input-div" *ngIf="!liveMode">
         <mat-label>Temperature</mat-label>
         <input matInput formControlName="temperature">
     </mat-form-field>
-    <mat-form-field appearance="outline" class="input-div">
+    <mat-form-field appearance="outline" class="input-div" *ngIf="!liveMode">
         <mat-label>Position</mat-label>
         <mat-select formControlName="position">
             <mat-option value="IN">In</mat-option>
             <mat-option value="OUT">Out</mat-option>
         </mat-select>
     </mat-form-field>
-    <mat-form-field appearance="outline" class="date-picker">
+    <mat-form-field appearance="outline" class="date-picker" *ngIf="!liveMode">
         <mat-label>Enter a date range</mat-label>
         <mat-date-range-input [rangePicker]="picker">
             <input matStartDate formControlName="startDate" placeholder="Start Date">

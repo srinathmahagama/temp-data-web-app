@@ -25,11 +25,13 @@ export class PlotViewComponent implements OnInit {
         .map(sensor1 => {
           return sensor1.temperature
         })
+        console.log(sensor1,'s1')
       const sensor2 = res
         .filter(data => data.sensorId == '2')
         .map(sensor2 => {
           return sensor2.temperature
         })
+        console.log(sensor2)
       this.barChartData = [
         { data: sensor1, label: 'Sensor 1' },
         { data: sensor2, label: 'Sensor 2' },

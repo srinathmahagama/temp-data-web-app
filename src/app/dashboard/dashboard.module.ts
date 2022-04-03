@@ -16,7 +16,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker'
 import { HttpClientModule } from '@angular/common/http';
 import { DashbaordService } from './services/dashbaord.service';
 import {MatButtonModule} from '@angular/material/button'
-
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,9 @@ import {MatButtonModule} from '@angular/material/button'
     MatSelectModule,
     MatDatepickerModule,
     HttpClientModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
+    
   ],
   providers: [DashbaordService,DatePipe]
 })

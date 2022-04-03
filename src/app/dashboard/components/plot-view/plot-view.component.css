@@ -5,3 +5,29 @@ p {
   .plot-div {
       width: 600px;
   }
+
+  .dashboard-header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 1rem;
+    margin-bottom: 10px;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.header{
+    color: rgb(63, 81, 181);
+    font-size:larger;
+    font-weight: 200;
+    font-size: 24px;
+    margin-left: 10px;
+   
+}
+
+.icon {
+    color: rgb(63, 81, 181);
+    font-size:x-large;
+    font-weight: 200;
+    font-size: 24px;
+}

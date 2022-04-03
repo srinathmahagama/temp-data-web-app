@@ -32,6 +32,7 @@ export class FilterOptionsComponent implements OnInit {
       startDate: [''],
       endDate: ['']
     })
+    
   }
 
   listenToSearch(){

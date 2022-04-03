@@ -6,26 +6,26 @@
 
         <!-- Position Column -->
         <ng-container matColumnDef="Sensor">
-            <th mat-header-cell *matHeaderCellDef> Sensor </th>
+            <th mat-header-cell *matHeaderCellDef> Sensor #</th>
             <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': isRequestLiveMode}"> {{element.sensorId}} </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="Room">
-            <th mat-header-cell *matHeaderCellDef> Room </th>
+            <th mat-header-cell *matHeaderCellDef> Room #</th>
             <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': isRequestLiveMode}"> {{element.roomId |number : '1.0-0'}} </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="Temperature">
-            <th mat-header-cell *matHeaderCellDef> Temperature </th>
+            <th mat-header-cell *matHeaderCellDef> Temperature  (C<sup>o</sup>)</th>
             <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': isRequestLiveMode}"> {{element.temperature |number : '1.0-2'}} </td>
         </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="Position">
             <th mat-header-cell *matHeaderCellDef> Position </th>
-            <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': isRequestLiveMode}"> {{element.devicePosition}} </td>
+            <td mat-cell *matCellDef="let element" [ngClass]="{'highlight': isRequestLiveMode}"> {{element.devicePosition == 'IN' ? 'Inside': 'Outside'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Noted Date">
