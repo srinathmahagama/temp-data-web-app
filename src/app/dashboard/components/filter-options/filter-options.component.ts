@@ -40,6 +40,9 @@ export class FilterOptionsComponent implements OnInit {
       .pipe(
         debounceTime(1000),
         tap(res => {
+          if(res?.startDate && res.startDate != '' && res.endDate == '' ) {
+            return;
+          }
           this.onSearchEmit.emit(res)
         })
       ).subscribe();

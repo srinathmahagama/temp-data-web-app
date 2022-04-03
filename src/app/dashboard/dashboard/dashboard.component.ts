@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { filter, first, map, Observable, of, Subject, tap } from 'rxjs';
+import { combineLatest, filter, first, forkJoin, interval, map, Observable, of, Subject, takeUntil, takeWhile, tap, timeInterval, timer } from 'rxjs';
 import { TemperatureSensorData } from '../model/temperature.sensor.data.model';
 import { DashbaordService } from '../services/dashbaord.service';
 
@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
 
   temperatureSensorData!: Observable<TemperatureSensorData[]>;
   liveModeSubject = new Subject<boolean>();
+  isLiveMode = false;
 
   ngOnInit(): void {
     this.loadInitData();
@@ -24,9 +25,6 @@ export class DashboardComponent implements OnInit {
       .pipe(
         map(res =>{
           return res;
-          // console.log('ffffffffff ',res);
-          // this.temperatureSensorData = of(res);
-          // console.log('jjjjjjjjjjj ',this.temperatureSensorData)
         })
       )
   }
@@ -38,28 +36,41 @@ export class DashboardComponent implements OnInit {
         map(res =>{
           return res;
         })
-      )
+      );
   }
 
   handleLiveMode($event:any): void {
-    const arr: TemperatureSensorData[] = [];
+    this.liveModeSubject.next($event);
+    this.isLiveMode = true;
     this.temperatureSensorData = this.temperatureSensorData.pipe(
       map(res =>{
-        return Array.of(res[0])
+        return res.slice(0,4);
       })
     )
-    this.liveModeSubject.next($event);
+    interval(10000)
+      .pipe(
+        tap(res =>{
+          if(this.isLiveMode){
+            this.temperatureSensorData = this.dashboardService.loadData()
+                                            .pipe(
+                                              map(res =>{
+                                                return res.slice(0,4)
+                                              })
+                                            );
+
+          }
+          
+        })
+      ).subscribe();
   }
 
   handleDefaultMode($event: any): void{
     this.liveModeSubject.next(false);
+    this.isLiveMode = false;
     this.temperatureSensorData = this.dashboardService.loadData()
       .pipe(
         map(res =>{
           return res;
-          // console.log('ffffffffff ',res);
-          // this.temperatureSensorData = of(res);
-          // console.log('jjjjjjjjjjj ',this.temperatureSensorData)
         })
       )
   }
@@ -67,4 +78,5 @@ export class DashboardComponent implements OnInit {
   getLiveMode(): Observable<boolean>{
    return this.liveModeSubject.asObservable();
   }
+
 }
